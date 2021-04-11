@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ JSGlue.include() }}
+    <pre class="tab"></pre>
+    <title>Investor Guru</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.semanticui.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+    <style> 
+        h1
+        { 
+        margin:10px 20px 10px 20px; 
+        }
+     </style>
+    <style> 
+        h2
+        { 
+        margin:0px 20px 10px 20px; 
+        }
+
+     </style> 
+
+  </head>
+{% block body %}
+<h1 style="font-family: sans-serif;">Investor Guru</span> <img src="{{url_for('static', filename='5a1ca3b55812f1.7204812815118263573608.png')}}" width="70" height="70" style="vertical-align:middle" /></h1>  
+  <pre class="tab"></pre>
+  <h2><a class="btn btn-success" href="/add_record"> Add Stock</a>&nbsp;&nbsp;&nbsp;</span><a class="btn btn-success" href="/upload_bulk_records"> Add Multiple Stocks</a></h1>
+  <pre class="tab"></pre>
+  <hr>
+  <div style="margin: 0px 20px 0px 20px;">
+  <table id="example" class="table table-striped table-bordered" style="text-align:center">
+    <thead>
+    <tr>
+      <th><strong style="font-size: 18px; font-family: sans-serif;">ID</strong></th>
+      <th><strong style="font-size: 18px; font-family: sans-serif;">Stock Name</strong></th>
+      <th><strong style="font-size: 18px; font-family: sans-serif;">Base Price</strong></th>
+      <th><strong style="font-size: 18px; font-family: sans-serif;">Current Price</strong></th>
+      <th><strong style="font-size: 18px; font-family: sans-serif;">Percentage Change</strong></th>
+      <th><strong style="font-size: 18px; font-family: sans-serif;">Message</strong></th>
+      <th><strong style="font-size: 18px; font-family: sans-serif;">Delete</strong></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for article in articles %}
+      <tr>
+        <td><strong style="font-size: 15px;font-family: sans-serif;">{{article.id}}</strong></td>
+        <td><strong style="font-size: 15px;font-family: sans-serif;">{{article.name}}</strong></td>
+        <td><strong style="font-size: 15px;font-family: sans-serif;">${{article.basePrice}}</strong></td>
+        <td><strong style="font-size: 15px;font-family: sans-serif;">${{article.currentPrice}}</strong></td>
+        <td><strong style="font-size: 15px;font-family: sans-serif;">{{article.percentageChange}}%</strong></td>
+        <td><strong style="font-size: 15px;font-family: sans-serif;">{{article.message}}</strong></td>
+        <td>
+          <form action="{{url_for('delete_records',name=article.name,baseprice=article.basePrice)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+</tbody>
+  </table>
+</div>
+  <script>$(document).ready(function() {
+    $('#example').DataTable( {rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+        responsive: true
+    });
+} );</script>
+{% endblock %}

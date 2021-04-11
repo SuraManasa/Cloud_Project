@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/199/xhtml">
+<head>
+  <meta charset="utf-8"/>
+  <style>
+    #submit-button{
+      background-color:cadetblue;
+      color: white;
+      padding:10px;
+      font-size: 20px;
+    }
+  </style>
+  <style>
+  p{
+    font-size: 20px;
+  }
+  </style>
+</head>
+<h1 style="font-family: sans-serif;">Investor Guru</span> <img src="{{url_for('static', filename='5a1ca3b55812f1.7204812815118263573608.png')}}" width="70" height="70" style="vertical-align:middle" /></h1>  
+<h2><a class="btn btn-success" href="/homepage"> Back to Dashboard</a></h2> 
+    <body>
+        <form method="POST">
+            <p>Enter the Stock name and Base Price </p><br>
+            <input name="stockname" required placeholder="Stock name" style="font-size:12pt;height:20px;width:200px;"></span>
+            <input name="baseprice" type ="number" step="any" required placeholder="Base price" style="font-size:12pt;height:20px;width:200px">
+            <input type="submit" id="submit-button">
+        </form>
+        <p>
+            {{message}}
+          </p> 
+    </body>
+</html>
