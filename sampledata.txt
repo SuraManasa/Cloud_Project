@@ -1,0 +1,1 @@
+[{"name": "SAP", "basePrice": 99.1}, {"name": "SNAP", "basePrice": 111.0}, {"name": "AAPL", "basePrice": 250.0}, {"name": "TWTR", "basePrice": 25.0}, {"name": "TSLA", "basePrice": 500.0}, {"name": "NFLX", "basePrice": 375.0}, {"name": "FB", "basePrice": 160.0}, {"name": "MSFT", "basePrice": 150.0}, {"name": "MSFTT", "basePrice": 130.0}, {"name": "EDO", "basePrice": 55.0}]
