@@ -24,8 +24,7 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t $IMAGE_URI .
-  artifacts:
-    files: images.json
+  
   post_build:
     commands:
       - bash -c "if [ /"$CODEBUILD_BUILD_SUCCEEDING/" == /"0/" ]; then exit 1; fi"
@@ -33,6 +32,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $IMAGE_URI
       - echo docker image is pushed to repository
-      -printf '[{"name":"cloudproject","imageUri":"%s"}]' "$IMAGE_URI" > images.json
+      - printf '[{"name":"cloudproject","imageUri":"%s"}]' "$IMAGE_URI" > images.json
       
-    
+artifacts:
+  files: images.json  
