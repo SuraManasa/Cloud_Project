@@ -1,4 +1,4 @@
-   from stock import app as app
+from stock import app as app
 
 
 if __name__ == "__main__":
